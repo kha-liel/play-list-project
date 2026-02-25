@@ -17,7 +17,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
     return "play-list-project";
   }
-
+  
   constructor() {
     super();
     this.title = "";
