@@ -20,18 +20,9 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   
   constructor() {
     super();
-    this.title = "";
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/play-list-project.ar.json", import.meta.url).href +
-        "/../",
-    });
+    this.title = "Top Line Heading";
+    this.subheading = "Slide Subheading";
+    this.activeSlide = 0;
   }
 
   // Lit reactive properties
@@ -39,6 +30,8 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      subheading: { type: String},
+      activeSlide: { type: Number}
     };
   }
 
@@ -66,7 +59,8 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <h3><span>${this.title}</span></h3>
+  <h4><span>${this.subheading}</span></h4>
   <slot></slot>
 </div>`;
   }
