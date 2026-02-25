@@ -29,9 +29,10 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
-      subheading: { type: String},
-      activeSlide: { type: Number}
+      title: { type : String },
+      subheading: { type : String},
+      activeSlide: { type : Number},
+      items: { type: Array}
     };
   }
 
