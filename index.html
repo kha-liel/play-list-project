@@ -23,6 +23,11 @@
     play-list-project:hover {
       box-shadow: var(--ddd-boxShadow-sm);
     }
+    #example {
+      --counter-app-font-size: var(--ddd-font-size-l);
+      background-color: var(--ddd-accent-2);
+      color: var(--ddd-primary-17);
+    }
     
   </style>
   <title>play-list-project</title>
@@ -31,13 +36,16 @@
 <body>
   <div id="demo">
     <h1>play-list-project</h1>
+    <h2>Dark Mode</h2>
     <!-- this is going to do whatever the tag's defaults are -->
     <play-list-project></play-list-project>
+    <h2>Light Mode</h2>
+    <play-list-project id="example" title="Sample property title"></play-list-project>
   </div>
   <script type="module" src="./play-list-project.js"></script>
 
   <!-- Take HAX, the Web and you further down the rabbit hole -->
-  <style>
+  <!--<style>
     #follow-the-white-rabbit {
       margin: var(--ddd-spacing-4) auto var(--ddd-spacing-16)  var(--ddd-spacing-4);
       background-color: var(--ddd-accent-4);
@@ -117,6 +125,6 @@
         <li><strong>💡 <em>Never. Stop. Innovating.</em></strong></li>
       </ul>
     </div>
-  </details>
+  </details>-->
 </body>
 </html>
