@@ -24,7 +24,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     this.subheading = "Slide Subheading";
     this.activeSlide = 0;
     this.details = "Information for slide.";
-    this.title = "Title for component";
+    this.title = "Screenreader accessibility";
   }
 
   // Lit reactive properties
@@ -54,7 +54,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
-    
+      
       .top-heading{
         font-size: var(--ddd-play-list-project-title-font-size, var(--ddd-font-size-s));
       }
@@ -71,13 +71,20 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--ddd-theme-default-original87Pink);
         margin-top: 4px;
       }
+      .details {
+        min-height: 200px;
+        max-height: 200px;
+        max-width: 450px;
+        text-align: left;
+        overflow-y: auto;
+      }
     `];
   }
 
   // Lit render the HTML
   render() {
     return html`
-<div class="slide-container" title="${this.title}">
+<div class="play-list-slide" title="${this.title}">
   <div class="wrapper">
     <span class="top-heading">${this.topHeading}</span>
     <br>
