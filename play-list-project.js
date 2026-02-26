@@ -23,6 +23,7 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     this.title = "Top Line Heading";
     this.subheading = "Slide Subheading";
     this.activeSlide = 0;
+    this.details = "Random information for slide.";
   }
 
   // Lit reactive properties
@@ -30,9 +31,10 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type : String },
-      subheading: { type : String},
-      activeSlide: { type : Number},
-      items: { type: Array}
+      subheading: { type : String },
+      activeSlide: { type : Number },
+      items: { type: Array },
+      details: { type: String },
     };
   }
 
@@ -50,8 +52,14 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
       }
-      h3 span {
+      h4 span {
         font-size: var(--play-list-project-label-font-size, var(--ddd-font-size-s));
+      }
+      .top-heading{
+        font-size: var(--ddd-play-list-project-title-fint-size, var(--ddd-font-size-s));
+      }
+      .subheading {
+        font-size: var(--ddd-play-list-project-subheading-font-size, var(--ddd-font-size-l));
       }
     `];
   }
@@ -60,8 +68,9 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
 <div class="wrapper">
-  <h3><span>${this.title}</span></h3>
-  <h4><span>${this.subheading}</span></h4>
+  <span class="top-heading">${this.title}</span><br>
+  <span class="subheading">${this.subheading}</span>
+  <p class="details">${this.details}</p>
   <slot></slot>
 </div>`;
   }
