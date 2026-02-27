@@ -70,8 +70,12 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         overflow-y: auto;
       }
 
-      #1 {
-        color: var(--ddd-theme-default-beaver70);
+      .button-wrapper button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: none;
+        margin: 4px;
       }
     `];
   }
@@ -81,10 +85,8 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     return html`
         <div class="play-list-slide" title="${this.title}">
             <div class="wrapper">
-                <span class="top-heading">${this.topHeading}</span>
-                <br>
-                <span class="subheading">${this.subheading}</span>
-                <hr>
+                <span class="top-heading">${this.topHeading}</span><br>
+                <span class="subheading">${this.subheading}</span><hr>
                 <p class="details">${this.details}</p>
                 <div class="button-wrapper">
                     <button id="1"></button>
@@ -97,13 +99,6 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         </div>`;
 }
 
-/**
-   * haxProperties integration via file reference
-   */
-static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(PlayListSlide.tag, PlayListSlide);
