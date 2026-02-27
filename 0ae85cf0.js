@@ -1,4 +1,0 @@
-import{D as o,i as c,b as l,I as d,a as p}from"./f7047fa3.js";var t=Object.freeze,u=Object.defineProperty,r=(e,i)=>t(u(e,"raw",{value:t(i||e.slice())}));/**
-* Copyright 2026 kha-liel
-* @license Apache-2.0, see LICENSE for full text.
-*/var a,s;class n extends o(d(p)){static get tag(){return"play-list-project"}constructor(){super()}static get properties(){return{...super.properties}}static get styles(){return[super.styles,c(a||(a=r(["\n      :host {\n        display: block;\n        color: var(--ddd-theme-primary);\n        background-color: var(--ddd-theme-accent);\n        font-family: var(--ddd-font-navigation);\n      }\n    "])))]}render(){return l(s||(s=r(['\n    <div class="container">\n      <slot></slot>\n    </div>\n    '])))}static get haxProperties(){return new URL("./lib/".concat(this.tag,".haxProperties.json"),import.meta.url).href}}globalThis.customElements.define(n.tag,n);
