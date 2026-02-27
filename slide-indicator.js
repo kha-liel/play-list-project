@@ -29,6 +29,12 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
 
     render() {
         return html`
+        <div class="wrapper">
+            <button id="1"></button>
+            <button id="2"></button>
+            <button id="3"></button>
+            <button id="4"></button>
+        </div>
         `;
     }
 

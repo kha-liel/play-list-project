@@ -9,8 +9,8 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
 
     constructor() {
         super();
-        this.topHeading = "Top Line Heading";
-        this.subheading = "Slide Subheading";
+        this.topHeading = "TOP LINE HEADING";
+        this.subheading = "Slide #, sub-heading";
         this.details = "Information for slide.";
         this.title = "Screenreader accessibility";
     }
@@ -45,9 +45,11 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
       
       .top-heading{
         font-size: var(--ddd-play-list-project-title-font-size, var(--ddd-font-size-s));
+        max-width: 250px;
       }
       .subheading {
         font-size: var(--ddd-play-list-project-subheading-font-size, var(--ddd-font-size-l));
+        max-width: 250px;
       }
       hr {
         width: 80px;
@@ -56,15 +58,20 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         padding-bottom: 4px;
         margin-left: 0;
         margin-right: auto;
-        color: var(--ddd-theme-default-original87Pink);
+        color: var(--ddd-theme-default-pughBlue);
         margin-top: 4px;
       }
       .details {
         min-height: 200px;
         max-height: 200px;
         max-width: 450px;
+        line-height: var(--ddd-lh-140);
         text-align: left;
         overflow-y: auto;
+      }
+
+      #1 {
+        color: var(--ddd-theme-default-beaver70);
       }
     `];
   }
@@ -79,6 +86,12 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
                 <span class="subheading">${this.subheading}</span>
                 <hr>
                 <p class="details">${this.details}</p>
+                <div class="button-wrapper">
+                    <button id="1"></button>
+                    <button id="2"></button>
+                    <button id="3"></button>
+                    <button id="4"></button>
+                </div>
                 <slot></slot>
             </div>
         </div>`;
