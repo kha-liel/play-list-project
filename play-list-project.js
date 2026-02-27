@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "./play-list-slide.js";
 
 /**
  * `play-list-project`
@@ -45,11 +46,9 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-      <play-list-slide
-        topHeading = "ETI 301"
-        subheading = "College of IST"
-        details = "blah blah blah blah blah blah">
-      </play-list-slide>
+    <div class="container">
+      <slot></slot>
+    </div>
     `;
   }
 
