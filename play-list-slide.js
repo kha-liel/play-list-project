@@ -58,7 +58,7 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         padding-bottom: 4px;
         margin-left: 0;
         margin-right: auto;
-        color: var(--ddd-theme-default-pughBlue);
+        color: var(--ddd-theme-default-skyBlue);
         margin-top: 4px;
       }
       .details {
@@ -75,7 +75,8 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         height: 12px;
         border-radius: 50%;
         border: none;
-        margin: 4px;
+        margin: 5px;
+        background-color: var(--ddd-theme-default-limestoneGray);
       }
     `];
   }

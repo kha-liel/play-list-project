@@ -23,12 +23,14 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   
   constructor() {
     super();
+    this.slideCount = 0;
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
+      slideCount: { type: Number }
     };
   }
 
@@ -54,13 +56,6 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     `;
   }
 
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(PlayListProject.tag, PlayListProject);
