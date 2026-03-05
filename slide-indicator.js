@@ -9,11 +9,15 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
 
     constructor() {
         super();
+        this.total = 0;
+        this.currentIndex = 0;
     }
 
     static get properties() {
         return {
             ...super.properties,
+            total: { type: Number},
+            currentIndex: { type: Number}
         };
     }
 
@@ -28,14 +32,29 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
     }
 
     render() {
+    let dots = [];
+    for (let i = 0; i < this.total; i++) {
+        dots.push(html`
+            <span @click="${this._handleDotClick}" data-index="${i}" class="dot ${i === this.activeIndex ? 'active' : ''}"></span>
+            `)
+    }
         return html`
-        <div class="button-wrapper">
-            <button id="1"></button>
-            <button id="2"></button>
-            <button id="3"></button>
-            <button id="4"></button>
+        <div class="dots">
+            ${dots}
         </div>
         `;
+    }
+
+    // added some stuff in for clicking indicator buttons
+    _handleDotClick(e) {
+        const indexChange = new CustomEvent("play-list-index-changed", {
+            composed: true,
+            bubbles: true,
+            detail: {
+                index: parseInt(e.target.dataset.index)
+            },
+        });
+        this.dispatchEvent(indexChange);
     }
 
 }

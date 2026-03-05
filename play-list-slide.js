@@ -89,12 +89,6 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
                 <span class="top-heading">${this.topHeading}</span><br>
                 <span class="subheading">${this.subheading}</span><hr>
                 <p class="details">${this.details}</p>
-                <div class="button-wrapper">
-                    <button id="1"></button>
-                    <button id="2"></button>
-                    <button id="3"></button>
-                    <button id="4"></button>
-                </div>
                 <slot></slot>
             </div>
         </div>`;

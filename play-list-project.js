@@ -51,7 +51,6 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <div class="container">
-      <slot></slot>
     </div>
     `;
   }
