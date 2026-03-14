@@ -24,10 +24,23 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
     static get styles() {
         return [super.styles,
         css`
-        /* nothing in here yet
-        :host {
-        
-        }*/
+        .dots { 
+            display: flex;
+            gap: var(--ddd-spacing-2);
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--ddd-theme-default-limestoneGray);
+            padding: 0;
+        }
+
+        .dot.active {
+            background-color: var(--ddd-theme-default-skyBlue);
+        }
         `];
     }
 
@@ -35,8 +48,12 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
     let dots = [];
     for (let i = 0; i < this.total; i++) {
         dots.push(html`
-            <span @click="${this._handleDotClick}" data-index="${i}" class="dot ${i === this.activeIndex ? 'active' : ''}"></span>
-            `)
+            <button 
+                @click="${this._handleDotClick}"
+                data-index="${i}"
+                class="dot ${i === this.activeIndex ? 'active' : ''}">
+            </button>
+            `);
     }
         return html`
         <div class="dots">
