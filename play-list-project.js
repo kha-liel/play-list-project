@@ -23,14 +23,16 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   
   constructor() {
     super();
-    this.slideCount = 0;
+    this.index = 0;
+    this.total = 0;
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
-      slideCount: { type: Number }
+      index: { type: Number, reflect : true },
+      total : { type: Number}
     };
   }
 
@@ -44,6 +46,8 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--ddd-theme-accent);
         font-family: var(--ddd-font-navigation);
       }
+
+  
     `];
   }
 
@@ -51,6 +55,14 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <div class="container">
+      <div class="navigation-controls">
+        <navigation-arrows direction="left" @click="${this.prevSlide}"></navigation-arrows>
+        <navigation-arrows direction="right" @click="${this.nextSlide}"></navigation-arrows>
+      </div>
+
+      <div class="slide-viewer">
+        <!-- figure out slot changing -->
+      </div>
     </div>
     `;
   }
