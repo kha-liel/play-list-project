@@ -14,6 +14,7 @@ export class NavigationArrows extends DDDSuper(I18NMixin(LitElement)) {
     static get properties() {
         return {
             ...super.properties,
+            direction: { type: String } // left or right
         };
     }
 
@@ -28,7 +29,11 @@ export class NavigationArrows extends DDDSuper(I18NMixin(LitElement)) {
     }
 
     render() {
+        const isLeft = this.direction === 'left';
         return html`
+            <button aria-label="${isLeft ? 'Previous Slide' : 'Next Slide'}">
+                ${isLeft ? html`&#8249;` : html`&#8250;`}
+            </button>
         `;
     }
 
