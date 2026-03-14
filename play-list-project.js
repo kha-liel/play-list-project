@@ -67,6 +67,13 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     `;
   }
 
+  prevSlide() {
+    this.index = (this.index <= 0) ? this.total - 1 : this.index - 1;
+  }
+
+  nextSlide () {
+    this.index = (this.index >= this.total - 1) ? 0 : this.index + 1;
+  }
 }
 
 globalThis.customElements.define(PlayListProject.tag, PlayListProject);
