@@ -23,7 +23,7 @@ export class NavigationArrows extends DDDSuper(I18NMixin(LitElement)) {
         css`
         button {
             background: white;
-            border: 2px solid font-variant(--ddd-theme-default-skyBlue);
+            border: 2px solid var(--ddd-theme-default-skyBlue);
             border-radius: 50%;
             width: 48px;
             height: 48px;
