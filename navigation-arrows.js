@@ -21,10 +21,25 @@ export class NavigationArrows extends DDDSuper(I18NMixin(LitElement)) {
     static get styles() {
         return [super.styles,
         css`
-        /* nothing in here yet
-        :host {
-        
-        }*/
+        button {
+            background: white;
+            border: 2px solid font-variant(--ddd-theme-default-skyBlue);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ddd-theme-default-skyBlue);
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        button:hover, button:focus {
+            background: var(--ddd-theme-default-skyBlue);
+            color: white;
+            outline: none;
+        }
         `];
     }
 
