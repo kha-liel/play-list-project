@@ -17,7 +17,6 @@
     }
     play-list-project {
       margin: var(--ddd-spacing-2);
-      border: var(--ddd-border-sm);
     }
     play-list-project:hover {
       box-shadow: var(--ddd-boxShadow-sm);
@@ -37,7 +36,17 @@
     <h1>play-list-project</h1>
     <!-- this is going to do whatever the tag's defaults are -->
     <play-list-project>
-      <play-list-slide></play-list-slide>
+      <play-list-slide
+      title="Introduction Slide"
+      top-heading="Welcome"
+      subheading="Slide 1">
+      <p>Content goes here...</p>
+    </play-list-slide>
+    <play-list-slide
+      title="Second Slide"
+      top-heading="Brief History"
+      subheading="Slide 2">
+      <p>Content goes here...</p>
     </play-list-project>
   </div>
   <script type="module" src="./play-list-project.js"></script>

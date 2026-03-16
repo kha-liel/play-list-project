@@ -43,8 +43,45 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
       :host {
         display: block;
         color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
+        background-color: transparent;
         font-family: var(--ddd-font-navigation);
+      }
+      .container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background-color: var(--ddd-theme-default-slateMaxLight);
+        padding: var(--ddd-spacing-12);
+        width: 700px;
+        min-height: 450px;
+        border-radius: 1%;
+        border: none;
+      }
+      .slide-viewer {
+        width: 100%;
+        max-width: 800px;
+      }
+      ::slotted(play-list-slide:not([active])) {
+        display: none;
+      }
+      ::slotted(play-list-slide[active]) {
+        display: block;
+      }
+      .navigation-controls {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 var(--dd-spacing-5);
+        z-index: 10;
+      }
+      .dots-indicator-container {
+        position: absolute;
+        bottom: var(--ddd-spacing-10);
+        left: var(--ddd-spacing-20);
       }
 
   
@@ -59,12 +96,27 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         <navigation-arrows direction="left" @click="${this.prevSlide}"></navigation-arrows>
         <navigation-arrows direction="right" @click="${this.nextSlide}"></navigation-arrows>
       </div>
-
       <div class="slide-viewer">
-        <!-- figure out slot changing -->
+        <slot @slotchange="${this.handleSlotChange}"></slot>
+      </div>
+      <div class="dots-indicator-container">
+        <slide-indicator
+          .total="${this.total}"
+          .currentIndex="${this.index}"
+          @play-list-index-changed="${this.handleIndexChange}">
+        </slide-indicator>
       </div>
     </div>
     `;
+  }
+
+  handleSlotChage (e) {
+    this.total = this.querySelectorAll('play-list-slide').length;
+    this.updatedVisibleSlide();
+  }
+
+  handleIndexChange(e) {
+    this.index = e.detail.index;
   }
 
   prevSlide() {
@@ -73,6 +125,25 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
 
   nextSlide () {
     this.index = (this.index >= this.total - 1) ? 0 : this.index + 1;
+  }
+
+  updatedVisibleSlide() {
+    const slides = Array.from(this.querySelectorAll('play-list-slide'));
+    if (slides.length > 0) {
+    slides.forEach((slide,i) => {
+      if (i === this.index) {
+        slide.setAttribute('active', '')
+    } else { 
+      slide.removeAttribute('active');
+    }
+    });
+  }
+}
+
+  updated(changedProperties) {
+    if (changedProperties.has('index')) {
+      this.updatedVisibleSlide();
+    }
   }
 }
 

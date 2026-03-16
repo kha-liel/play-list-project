@@ -51,7 +51,7 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
             <button 
                 @click="${this._handleDotClick}"
                 data-index="${i}"
-                class="dot ${i === this.activeIndex ? 'active' : ''}">
+                class="dot ${i === this.currentIndex ? 'active' : ''}">
             </button>
             `);
     }

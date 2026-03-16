@@ -31,7 +31,7 @@ export class NavigationArrows extends DDDSuper(I18NMixin(LitElement)) {
             align-items: center;
             justify-content: center;
             color: var(--ddd-theme-default-skyBlue);
-            font-size: 32px;
+            font-size: 40px;
             font-weight: bold;
         }
 

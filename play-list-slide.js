@@ -11,19 +11,18 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         super();
         this.topHeading = "TOP LINE HEADING";
         this.subheading = "Slide #, sub-heading";
-        this.details = "Information for slide.";
         this.title = "Screenreader accessibility";
+        this.active = false;
     }
 
     // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
-      topHeading: { type : String },
-      subheading: { type : String },
-      items: { type: Array },
-      details: { type: String },
-      title: { type: String }
+      topHeading: { type : String, attribute: "top-heading" },
+      subheading: { type : String, attribute: "subheading" },
+      title: { type: String },
+      active: { type: Boolean, reflect : true }
     };
   }
 
@@ -34,10 +33,14 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
       :host {
         display: block;
         color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
+        background-color: transparent;
         font-family: var(--ddd-font-primary);
         font-weight: var(--ddd-font-weight-medium);
       }
+      :host([active]) {
+        display: block;
+      }
+
       .wrapper {
         margin: var(--ddd-spacing-2);
         padding: var(--ddd-spacing-4);
@@ -70,14 +73,6 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
         overflow-y: auto;
       }
 
-      .button-wrapper button {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: none;
-        margin: 5px;
-        background-color: var(--ddd-theme-default-limestoneGray);
-      }
     `];
   }
 
@@ -86,10 +81,13 @@ export class PlayListSlide extends DDDSuper(I18NMixin(LitElement)) {
     return html`
         <div class="play-list-slide" title="${this.title}">
             <div class="wrapper">
-                <span class="top-heading">${this.topHeading}</span><br>
-                <span class="subheading">${this.subheading}</span><hr>
-                <p class="details">${this.details}</p>
-                <slot></slot>
+                <span class="top-heading">${this.topHeading}</span>
+                <br>
+                <span class="subheading">${this.subheading}</span>
+                <hr>
+                <div class="details">
+                  <slot></slot>
+                </div>
             </div>
         </div>`;
 }
