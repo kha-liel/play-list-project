@@ -41,9 +41,10 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     return [super.styles,
     css`
       :host {
-        display: block;
+        display: inline-block;
         color: var(--ddd-theme-primary);
         background-color: transparent;
+        border: none;
         font-family: var(--ddd-font-navigation);
       }
       .container {
@@ -52,9 +53,9 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
         background-color: var(--ddd-theme-default-slateMaxLight);
         padding: var(--ddd-spacing-12);
-        width: 700px;
-        min-height: 450px;
-        border-radius: 1%;
+        width: 800px;
+        min-height: 300px;
+        border-radius: var(--ddd-radius-xs);
         border: none;
       }
       .slide-viewer {
