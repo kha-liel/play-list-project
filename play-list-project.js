@@ -58,9 +58,29 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
         border-radius: var(--ddd-radius-xs);
         border: none;
       }
+
+      @media (max-wdith: 1024px) {
+        .container {
+          width: 95vw;
+          margin: var(--ddd-spacing-4) auto;
+          min-height: auto;
+        }
+        ::slotted(play-list-slide) {
+          --ddd-font-size-xl: var(--ddd-font-size-l)
+        }
+      }
       .slide-viewer {
         width: 100%;
         max-width: 800px;
+      }
+
+      @media (max-width: 600px) {
+        .navigation-controls {
+          position: static;
+          transform: none;
+          padding: var(--ddd-spacing-4) 0;
+          justify-content: space-around;
+        }
       }
       ::slotted(play-list-slide:not([active])) {
         display: none;
@@ -112,8 +132,8 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   handleSlotChage (e) {
-    this.total = this.querySelectorAll('play-list-slide').length;
-    this.updatedVisibleSlide();
+    const slides = Array.from(this.querySelectorAll('play-list-slide'));
+    this.total = slides.length;
   }
 
   handleIndexChange(e) {
@@ -121,16 +141,30 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   prevSlide() {
-    this.index = (this.index <= 0) ? this.total - 1 : this.index - 1;
+    const slides = Array.from(this.querySelectorAll('play-list-slide'));
+    if (this.index <= 0) {
+      this.index = slides.length - 1;
+    } else {
+      this.index--;
+    }
   }
 
   nextSlide () {
-    this.index = (this.index >= this.total - 1) ? 0 : this.index + 1;
+    const slides = Array.from(this.querySelectorAll('play-list-slide'));
+    if (this.index >= slides.length - 1) {
+      this.index = 0;
+    } else {
+      this.index++;
+    }
   }
 
   updatedVisibleSlide() {
     const slides = Array.from(this.querySelectorAll('play-list-slide'));
-    if (slides.length > 0) {
+    this.total = slides.length;
+    
+    if (this.index >= slides.length) {
+      this.index = 0;
+    }
     slides.forEach((slide,i) => {
       if (i === this.index) {
         slide.setAttribute('active', '')
@@ -139,13 +173,17 @@ export class PlayListProject extends DDDSuper(I18NMixin(LitElement)) {
     }
     });
   }
+
+
+firstUpdated() {
+  this.updatedVisibleSlide();
 }
 
-  updated(changedProperties) {
-    if (changedProperties.has('index')) {
-      this.updatedVisibleSlide();
-    }
+updated(changedProperties) {
+  if (changedProperties.has('index')) {
+    this.updatedVisibleSlide();
   }
+}
 }
 
 globalThis.customElements.define(PlayListProject.tag, PlayListProject);
