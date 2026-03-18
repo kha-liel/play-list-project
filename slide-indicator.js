@@ -32,10 +32,10 @@ export class SlideIndicator extends DDDSuper(I18NMixin(LitElement)) {
         .dot {
             width: 12px;
             height: 12px;
-            border-radius: 50%;
+            border-radius: var(--ddd-radius-circle);
             border: none;
             background-color: var(--ddd-theme-default-limestoneGray);
-            padding: 0;
+            padding: var(--ddd-spacing-0);
         }
 
         .dot.active {
